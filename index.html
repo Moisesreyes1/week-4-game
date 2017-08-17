@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Time!</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	
+
+</head>
+<body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+		<!-- Title/header of the game -->
+		<HEADER>
+			<h1>Can you handle the power of the CRYSTALS?</h1>
+		</HEADER>
+
+			<!-- Instructions section -->
+			<div id="instructions">
+				<p>At the beginning of the game you will be given a random amount of crystals.</p>
+				<br><br>
+				<p>You have four types of crystals below, all with a different hidden value (Shown when clicked).<br>Click on any or a combination of them to collect the necessary crystals to match the amount of crystals shown.</p>
+				<br><br>
+				<p>If your collection matches crystal amount, you win!</p>
+				<br><br>
+				<p>If you go over the crystal amount shown, you lose.</p>
+			</div>
+
+			<!-- Display random/target number of crystals that need to be collected -->
+			<div id="randomCrystal"></div>
+
+
+				<!-- Display player's wins and losses -->
+				<div class="win-losses">
+					<div class="row">
+						<div class="col-md-4 col-sm-6 col-xs-12 col-lg-6">
+							<div id="wins"><strong>Wins: 0</strong></div>
+							<div id="losses"><strong>Losses: 0</strong></div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Crystals images -->
+			<div id="crystals"></div>
+
+
+			<!-- Display player's current score -->
+			<div id="playerScore">Your total score:</div>
+			<dir id="score"></dir>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="assets/javascript/crystal.js"></script>
+
+</body>
+</html>
