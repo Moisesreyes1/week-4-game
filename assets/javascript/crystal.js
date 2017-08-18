@@ -118,7 +118,9 @@ $(document).ready(function() {
 
 	// Clicking on crystals //
 	$("#crystals").on("click", function() {
-		$("#score").text(images);
+		console.log(score);
+		score++;
+		$("#score").text(score);
 		
 
 	// Logic //
