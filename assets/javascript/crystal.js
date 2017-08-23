@@ -4,7 +4,9 @@ $(document).ready(function() {
 	// Variables for the game //
 	var wins = 0;
 	var losses = 0;
-	var score = [];
+	var score = 0;
+	var points = 0;
+
 
 	// To generate random number for crystals //
 	var randomNumber = randomCrystals();
@@ -18,11 +20,15 @@ $(document).ready(function() {
 
 	// To display crystal images to screen //
 	var crystals = crystalValues();
-	 for(var i=0;i<crystals.length;i++){
-	 	var images = $("<img/>").attr("src", crystals[i].src)
-	 	images.attr("length", crystals[i].length)
-	 	$("#crystals").append(images);
-	 	console.log(crystals);
+	function makeCrystals() {
+		for(var i=0;i<crystals.length;i++){
+	 		var images = $("<img/>").attr("src", crystals[i].src);
+		 	images.attr("data-imagevalue", crystals[i].points);
+		 	images.addClass("diamond");
+		 	// console.log(images);
+		 	$("#crystals").append(images);
+		 	// console.log(crystals);
+		}	
 	 }
 
 	// Function to assign random value to player's crystal choices //
@@ -54,18 +60,21 @@ $(document).ready(function() {
 	
 	// Function to set game //
 	function setGame() {
-		wins = 0;
-		losses = 0;
 		score = 0;
-		console.log(setGame);
+		//console.log(setGame);
 
 	// Random value for crystals //
-	crystals = randomCrystals();
-
+	crystals = crystalValues();
+	$("#crystals").html("");
+	makeCrystals();
 	// Render number to page //
 	randomNumber = randomCrystals();
-	$("#randomCrystal").text(crystals);
-	console.log(randomCrystals);
+
+	$("#randomCrystal").text(randomNumber);
+	//console.log(randomCrystals);
+	$("#score").text(score);
+	$("#wins").html("<strong>Wins: "+wins+"</strong>");
+	$("#losses").html("<strong>Losses: "+losses+"</strong>");
 	}
 
 	// Function to update page //
@@ -73,31 +82,22 @@ $(document).ready(function() {
 		$(".win-losses").empty();
 	}
 
-	// Game logic //
-	// If player wins //
-	if (wins === true) {
-		alert ("You win!");
-		setGame();
-		randomCrystals();
-	}
+	// // Game logic //
+	// // If player wins //
+	// if (wins === true) {
+	// 	alert ("You win!");
+	// 	setGame();
+	// 	randomCrystals();
+	// }
 
-	// If player losses //
-	else if (wins === false) {
-		alert("The power of the crystals are too much for you! You lost");
-		setGame();
-		randomCrystals();
-	}
+	// // If player losses //
+	// else if (wins === false) {
+	// 	alert("The power of the crystals are too much for you! You lost");
+	// 	setGame();
+	// 	randomCrystals();
+	// }
 
-	// Function to display crystal choices for player //
-	function renderCrystals() {
-		for (var key in crystals) {
-			var crystalDiv = $("<div class= 'crystals-button' data-name='" + key + "'>");
-			var crystalImg = $("<img alt= 'image' class= 'crystal-img'>").attr("src", crystals[key].url);
-				crystalDiv.append(crystalImg);
-				$("#crystals").append(crystalDiv);
-
-		}
-	}
+	
 
 	// Function to update player number //
 	function updateNumber(){
@@ -106,7 +106,7 @@ $(document).ready(function() {
 
 	// Function to render player number //
 	function renderScore () {
-		$("#score").html();
+		
 		$("#score").html(score);
 	}
 
@@ -117,11 +117,29 @@ $(document).ready(function() {
 	renderScore();
 
 	// Clicking on crystals //
-	$("#crystals").on("click", function() {
-		console.log(score);
-		score++;
-		$("#score").text(score);
+	$(document).on("click",".diamond", function() {
+		console.log($(this).attr("data-imagevalue"));
+		var dataVal=$(this).attr("data-imagevalue");
+		var temp = parseInt(dataVal);
 		
+		score+=temp;
+		console.log(score);
+		$("#score").text(score);
+
+	
+	// Function to get and render score from crystal values //
+	
+	// function score () {
+	// 	$("#score") = crystals.points;
+	// 	$("#crystals").change(function() {
+	// 		crystals.each(function() {
+	// 			score = score + parseInt($(this).val());
+	// 		})
+	// 		$("#score").text(score);
+	// 	})
+		
+	// 	}
+	
 
 	// Logic //
 	if (score === randomNumber) {
